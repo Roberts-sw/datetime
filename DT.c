@@ -35,7 +35,7 @@ Sdate txtGB2date(char const *str)		//ex: txtGB2date("Jul  6 2021");
 		case 's':rc.M=9;	break;
 		case 'a':rc.M='r'==str[2] ? 4 : 8;	break;
 		case 'f':rc.M=2;	break;
-		case 'm':rc.M='i'!=str[2] ? 3 : 5;	break;
+		case 'm':rc.M='r'==str[2] ? 3 : 5;	break;
 		case 'j':rc.M='a'==str[1] ? 1 : 'n'==str[2] ? 6 : 7;	break; 
 		default: rc.M=0;
 	}	return rc;
@@ -89,10 +89,9 @@ u08 txt2month(char const *str)
 		case 's':return 9;
 		case 'a':return 'r'==str[2] ? 4 : 8;
 		case 'f':return 2;
-		case 'm':return 'i'!=str[2] ? 3 : 5;	//GB: 'r'==str[2] ? 3 : 5;
-		case 'j':
-		if('a'!=str[1])
-			return 'n'==str[2] ? 6 : 7;
+		case 'm':return 'i'!=str[2] ? 3 : 5;
+		case 'j':if('a'!=str[1])
+					return 'n'==str[2] ? 6 : 7;
 		default: return 1;
 	}	return 0;
 }
