@@ -4,7 +4,7 @@
 //    • module_rep = convert from rep
 #include "DT.h"
 
-u16 date2nr (Sdate dt)           //date to nr
+u16 date2nr (Sdate dt)          //date to nr
 {   u16 nr=365*(dt.Y-1)+(dt.Y-1)/4;
     switch(dt.M)
     {   case 2: nr += 31;
@@ -14,7 +14,7 @@ u16 date2nr (Sdate dt)           //date to nr
                 nr += 30 + (8&m ? !(1&m) : 1&m);
     }   return nr + dt.D-1-(nr>36218);  //!(29 feb 2100)
 }
-Sdate date_nr (u16 nr)           //date from nr
+Sdate date_nr (u16 nr)          //date from nr
 {   Sdate rc={.wd=(u08)(nr%7) };
     u16 s; u08 x=1;
     if(nr>=36218)               nr+=1;  //!(29 feb 2100)
@@ -47,7 +47,7 @@ Sdate date_ymd (u16 y, u08 m, u08 d)//from ymd
 u16 time2nr (Stime ti)          //get timenr from time
 {   u16 nr=(60*ti.h+ti.m);
     nr=(u32)nr*93207UL>>10+1;   //0...1439 ==> 0 ... 0xffff - 45
-    return nr + (ti.s+1)*3/4;
+    return nr + (ti.s*3+2)/4;   //overall closer to *3./4, 0xffff is invalid
 }
 Stime time_nr (u16 nr)          //convert timenr to time
 {   Stime rc;
