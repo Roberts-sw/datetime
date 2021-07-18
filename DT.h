@@ -19,6 +19,7 @@ extern "C" {
 #   endif
 
 u16 date2nr(Sdate dt);  //to nr
+u08 date2weeknr(Sdate dt);
 Sdate date_nr(u16 nr);  //from nr
 Sdate date_str(char const *str, u08 lang);//from str
 Sdate date_ymd(u16 y, u08 m, u08 d);//from ymd
@@ -55,6 +56,7 @@ public:
     u08 month() const   {return date.M;}
     u08 day() const     {return date.D;}
     u08 weekday()       {return date.wd=nr()%7;}    //0..6 - Monday..Sunday
+    u08 weeknr()		{return date2weeknr(date);}
 };
 
 struct Time
@@ -99,6 +101,7 @@ int main (void)
     dt.Date::weekday();
     u32 timestamp=dt.nr();
     dt=Dt(timestamp+0x10000);   //next day from time stamp
+    u08 weeknr=dt.weeknr();
     ...
 }
 //*/
