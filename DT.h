@@ -98,7 +98,7 @@ int main (void)
     u16 day=dt.Date::nr();
     u16 tim=dt.Time::nr();
     dt.setdate_nr(++day);       //next day from daynr
-    dt.Date::weekday();
+    dt.weekday();
     u32 timestamp=dt.nr();
     dt=Dt(timestamp+0x10000);   //next day from time stamp
     u08 weeknr=dt.weeknr();
