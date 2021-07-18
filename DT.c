@@ -106,15 +106,15 @@ u08 txt2month (char const *str, u08 lang)
     }   return rc;
 }
 u08 date2weeknr (Sdate dt)
-{	// DIN 1355-1 / ISO 8601 week nr is based at working days:
-	// • week nrs start in the first week with at least 4 days in the year
-	// • day of week 0=MONDAY
+{   // DIN 1355-1 / ISO 8601 week nr is based at working days:
+    // • week nrs start in the first week with at least 4 days in the year
+    // • day of week 0=MONDAY
 
-	// ==> count weeks from 1 Jan upto this weeks thursday
-	u16 datenr=date2nr(dt);
-	u08 const MONDAY=0;         //daynr 0 is Mon 1-1-2001 
-	u16 thursday=(datenr + (MONDAY+3) - (datenr-MONDAY)%7);
-	dt.Y=date_nr(thursday).Y; dt.M=1; dt.D=1;
-	u16 nr1jan=date2nr(dt);
-	return 1 + (thursday-nr1jan)/7;
+    // ==> count weeks from 1 Jan upto this weeks thursday
+    u16 datenr=date2nr(dt);
+    u08 const MONDAY=0;         //daynr 0 is Mon 1-1-2001 
+    u16 thursday=(datenr + (MONDAY+3) - (datenr-MONDAY)%7);
+    dt.Y=date_nr(thursday).Y; dt.M=1; dt.D=1;
+    u16 nr1jan=date2nr(dt);
+    return 1 + (thursday-nr1jan)/7;
 }

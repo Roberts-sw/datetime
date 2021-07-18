@@ -56,7 +56,7 @@ public:
     u08 month() const   {return date.M;}
     u08 day() const     {return date.D;}
     u08 weekday()       {return date.wd=nr()%7;}    //0..6 - Monday..Sunday
-    u08 weeknr()		{return date2weeknr(date);}
+    u08 weeknr()        {return date2weeknr(date);}
 };
 
 struct Time
