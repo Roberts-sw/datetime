@@ -1,7 +1,7 @@
 //  RvL/DT.c (c) 2021,  daynr 0 is Mon 1-1-2001
 //  C naming convention:
-//    • module2rep = convert to rep
-//    • module_rep = convert from rep
+//    â€¢ module2rep = convert to rep
+//    â€¢ module_rep = convert from rep
 #include "DT.h"
 
 u16 date2nr (Sdate dt)          //date to nr
@@ -88,7 +88,7 @@ u08 twodigits (char const *str)
 }
 u08 txt2month (char const *str, u08 lang)
 {   //Jan Feb Mar Apr May Jun Jul Aug Sep Okt Nov Dec (GB)
-    //Jan Feb Mär Apr Mai Jun Jul Aug Sep Okt Nov Dez (D)
+    //Jan Feb MÃ¤r Apr Mai Jun Jul Aug Sep Okt Nov Dez (D)
     //jan feb maa apr mei jun jul aug sep okt nov dec (NL)
     u08 rc=search4("jfmamjjasond", str[0]|0x20)+1;  //1..13
     switch(rc)
@@ -107,8 +107,8 @@ u08 txt2month (char const *str, u08 lang)
 }
 u08 date2weeknr (Sdate dt)
 {   // DIN 1355-1 / ISO 8601 week nr is based at working days:
-    // • week nrs start in the first week with at least 4 days in the year
-    // • day of week 0=MONDAY
+    // â€¢ week nr 1 is the first week with the most days in the new year
+    // â€¢ day of week 0=MONDAY
 
     // ==> count weeks from 1 Jan upto this weeks thursday
     u16 datenr=date2nr(dt);
